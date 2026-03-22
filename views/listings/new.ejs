@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wanderlust – New Listing</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <%# ── Navbar ── %>
+  <nav class="navbar wl-navbar">
+    <div class="container">
+      <a class="navbar-brand wl-brand" href="/listings">🌍 Wanderlust</a>
+    </div>
+  </nav>
+
+  <%# ── Flash messages ── %>
+  <div class="container mt-3">
+    <% if (error && error.length > 0) { %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        ⚠️ <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    <% } %>
+  </div>
+
+  <main class="container my-4" style="max-width:620px;">
+    <a href="/listings" class="wl-back-link d-inline-block mb-3">← Back to listings</a>
+    <h4 class="fw-bold mb-4">Create a new listing</h4>
+
+    <form method="POST" action="/listings" novalidate class="needs-validation">
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Title <span class="text-danger">*</span></label>
+        <input
+          type="text"
+          name="listing[title]"
+          class="form-control"
+          placeholder="e.g. Cozy Beachfront Cottage"
+          required
+        />
+        <div class="invalid-feedback">Please enter a title.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Description</label>
+        <textarea
+          name="listing[description]"
+          class="form-control"
+          rows="3"
+          placeholder="Describe your listing — what makes it special?"
+        ></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Image URL</label>
+        <input
+          type="url"
+          name="listing[image][url]"
+          class="form-control"
+          placeholder="https://images.unsplash.com/..."
+        />
+        <div class="form-text text-muted">Paste an Unsplash or direct image URL. Leave blank for a default image.</div>
+      </div>
+
+      <div class="row g-2 mb-3">
+        <div class="col-6">
+          <label class="form-label fw-semibold">Price per night ($) <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input
+              type="number"
+              name="listing[price]"
+              class="form-control"
+              placeholder="e.g. 149"
+              min="0"
+              required
+            />
+          </div>
+          <div class="invalid-feedback">Please enter a price.</div>
+        </div>
+        <div class="col-6">
+          <label class="form-label fw-semibold">Category</label>
+          <select name="listing[category]" class="form-select">
+            <option value="Other">✨ Other</option>
+            <option value="Beach">🏖️ Beach</option>
+            <option value="Mountains">⛰️ Mountains</option>
+            <option value="Cities">🏙️ Cities</option>
+            <option value="Islands">🏝️ Islands</option>
+            <option value="Ski">⛷️ Ski</option>
+            <option value="Cabins">🌲 Cabins</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row g-2 mb-4">
+        <div class="col-6">
+          <label class="form-label fw-semibold">Location</label>
+          <input
+            type="text"
+            name="listing[location]"
+            class="form-control"
+            placeholder="e.g. Miami Beach"
+          />
+        </div>
+        <div class="col-6">
+          <label class="form-label fw-semibold">Country</label>
+          <input
+            type="text"
+            name="listing[country]"
+            class="form-control"
+            placeholder="e.g. United States"
+          />
+        </div>
+      </div>
+
+      <button type="submit" class="btn wl-btn-primary w-100">Add Listing</button>
+    </form>
+  </main>
+
+  <%# ── Footer ── %>
+  <footer class="wl-footer mt-5">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <span>Mandeep Sharma &nbsp;|&nbsp; &copy; 2025 Wanderlust. All rights reserved.</span>
+      <div class="wl-footer-links mt-2 mt-md-0">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (() => {
+      const forms = document.querySelectorAll('.needs-validation');
+      forms.forEach(form => {
+        form.addEventListener('submit', e => {
+          if (!form.checkValidity()) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

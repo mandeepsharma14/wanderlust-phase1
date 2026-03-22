@@ -1,0 +1,267 @@
+/* ================================================================
+   WANDERLUST – Phase 1 Stylesheet
+   Bootstrap companion — only custom overrides & brand styles here
+   ================================================================ */
+
+/* ── Google Font ──────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f8f8;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+/* ── Navbar ───────────────────────────────────────────────────── */
+.wl-navbar {
+  background-color: #ff385c;
+  padding: 0.75rem 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+.wl-brand {
+  color: #fff !important;
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.wl-btn-new {
+  color: #ff385c !important;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.35rem 0.9rem;
+}
+
+/* ── Hero banner ──────────────────────────────────────────────── */
+.wl-hero {
+  background: linear-gradient(135deg, #ff385c 0%, #c0254a 100%);
+  color: #fff;
+  padding: 2.5rem 0 2rem;
+}
+
+.wl-hero-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.wl-hero-sub {
+  font-size: 1rem;
+  opacity: 0.88;
+  margin-bottom: 0;
+}
+
+/* ── Category filter pills ────────────────────────────────────── */
+.wl-filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+
+.wl-filters::-webkit-scrollbar { display: none; }
+
+.wl-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #555;
+  background: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.wl-filter-pill:hover {
+  border-color: #ff385c;
+  color: #ff385c;
+  background: #fff5f7;
+}
+
+.wl-filter-pill.active {
+  background: #ff385c;
+  border-color: #ff385c;
+  color: #fff;
+}
+
+.wl-filter-icon { font-size: 14px; }
+
+/* ── Listing cards ────────────────────────────────────────────── */
+.wl-listing-card {
+  border-radius: 14px !important;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.wl-listing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.11);
+}
+
+.wl-card-img {
+  height: 195px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.wl-card-title {
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Category badge on card */
+.wl-badge-wrap {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+.wl-category-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.92);
+  color: #444;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.08);
+  backdrop-filter: blur(4px);
+}
+
+/* ── Price & stars ────────────────────────────────────────────── */
+.wl-price { color: #ff385c; }
+
+.wl-star       { color: #ff385c; font-size: 0.9rem; }
+.wl-star-empty { color: #ddd;    font-size: 0.9rem; }
+
+/* ── Show page ────────────────────────────────────────────────── */
+.wl-show-img {
+  max-height: 440px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.wl-back-link {
+  color: #ff385c;
+  font-size: 0.875rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.wl-back-link:hover { text-decoration: underline; }
+
+/* ── Reviews ──────────────────────────────────────────────────── */
+.wl-review-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.wl-review-form-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 20px 22px;
+}
+
+.wl-review-stars { font-size: 1rem; }
+
+.wl-review-delete {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.wl-review-delete:hover { opacity: 1; }
+
+/* Interactive star picker */
+.wl-star-picker {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.wl-star-btn {
+  font-size: 1.8rem;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.1s, transform 0.1s;
+  user-select: none;
+  line-height: 1;
+}
+
+.wl-star-btn.active,
+.wl-star-btn.hover { color: #ff385c; transform: scale(1.1); }
+
+/* ── Buttons ──────────────────────────────────────────────────── */
+.wl-btn-primary {
+  background-color: #ff385c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  transition: background-color 0.15s ease;
+}
+
+.wl-btn-primary:hover {
+  background-color: #e0314f;
+  color: #fff;
+}
+
+/* ── Forms ────────────────────────────────────────────────────── */
+.form-control:focus,
+.form-select:focus {
+  border-color: #ff385c;
+  box-shadow: 0 0 0 0.2rem rgba(255, 56, 92, 0.18);
+}
+
+/* ── Flash alerts ─────────────────────────────────────────────── */
+.alert { border-radius: 10px; font-size: 0.9rem; }
+
+/* ── Footer ───────────────────────────────────────────────────── */
+.wl-footer {
+  background: #222;
+  color: #aaa;
+  font-size: 0.82rem;
+  padding: 1.2rem 0;
+  margin-top: auto;
+}
+
+.wl-footer-links {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.wl-footer-links a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.wl-footer-links a:hover { color: #fff; }
+
+/* ── Responsive tweaks ────────────────────────────────────────── */
+@media (max-width: 576px) {
+  .wl-hero-title { font-size: 1.5rem; }
+  .wl-show-img   { max-height: 240px; }
+}
